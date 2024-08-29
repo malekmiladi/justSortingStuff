@@ -56,4 +56,49 @@ class BubbleSortTest {
         assertArrayEquals(sortedArray, arr);
     }
 
+    @RepeatedTest(10)
+    @DisplayName("Tests an array with only duplicate values (classic algorithm)")
+    void duplicates2() {
+        int[] arr = new int[480];
+        Arrays.fill(arr, 2);
+        int[] sortedArray = Arrays.stream(Arrays.copyOfRange(arr, 0, arr.length)).sorted().toArray();
+        BubbleSort.sort2(arr);
+        assertArrayEquals(sortedArray, arr);
+    }
+
+    @RepeatedTest(10)
+    @DisplayName("Tests a randomly generated integer array of 480 elements (even size) (classic algorithm)")
+    void randomArray480_2() {
+        int[] arr = IntStream.generate(() -> new Random().nextInt(10000)).limit(480).toArray();
+        int[] sortedArray = Arrays.stream(Arrays.copyOfRange(arr, 0, arr.length)).sorted().toArray();
+        BubbleSort.sort2(arr);
+        assertArrayEquals(sortedArray, arr);
+    }
+
+    @RepeatedTest(10)
+    @DisplayName("Tests a randomly generated integer array of 485 elements (odd size) (classic algorithm)")
+    void randomArray485_2() {
+        int[] arr = IntStream.generate(() -> new Random().nextInt(10000)).limit(485).toArray();
+        int[] sortedArray = Arrays.stream(Arrays.copyOfRange(arr, 0, arr.length)).sorted().toArray();
+        BubbleSort.sort2(arr);
+        assertArrayEquals(sortedArray, arr);
+    }
+
+    @RepeatedTest(10)
+    @DisplayName("Tests an empty array (classic algorithm)")
+    void emptyArray2() {
+        int[] arr = new int[0];
+        BubbleSort.sort2(arr);
+        assertArrayEquals(new int[0], arr);
+    }
+
+    @RepeatedTest(10)
+    @DisplayName("Tests an array with size 1 (classic algorithm)")
+    void size1_2() {
+        int[] arr = IntStream.generate(() -> new Random().nextInt(10000)).limit(1).toArray();
+        int[] sortedArray = Arrays.stream(Arrays.copyOfRange(arr, 0, arr.length)).sorted().toArray();
+        BubbleSort.sort2(arr);
+        assertArrayEquals(sortedArray, arr);
+    }
+
 }
